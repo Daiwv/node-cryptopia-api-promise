@@ -1,0 +1,25 @@
+{
+  "name": "cryptopia-api-promise",
+  "version": "0.0.0",
+  "description": "A cryptopia API client for NodeJS using the promise syntax and an optional simplified naming scheme Edit",
+  "main": "cryptopia-api-promise.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toonvanvr/node-cryptopia-api-promise.git"
+  },
+  "keywords": [
+    "cryptopia"
+  ],
+  "author": "Toon Vanvreckem",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toonvanvr/node-cryptopia-api-promise/issues"
+  },
+  "homepage": "https://github.com/toonvanvr/node-cryptopia-api-promise#readme",
+  "dependencies": {
+    "request-promise-json": "^1.0.4"
+  }
+}
