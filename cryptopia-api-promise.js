@@ -41,10 +41,9 @@ function toPair ( pair ) {
 // Net Functions
 async function get ( ...url ) {
   url = [root, ...url].filter(x=>x!==void(0)).join('/')
-  console.log(url)
   let response = await promiseJSON.get(url)
   if (response.Success)
-    return response.Data
+    return [response.Data, response.Message]
   else
     throw response.Message
 }
@@ -58,25 +57,25 @@ function getTradePairs() {
   return get(URL.pairs)
 }
 
-function getMarkets ( base, hours=24 ) {
+function getMarkets (base, hours=24) {
   return get(URL.markets, base, hours)
-}
 
-function getMarket ( pair=['BTC','USDT'], hours=24 ) {
+}
+function getMarket (pair=['BTC','USDT'], hours=24) {
   return get(URL.market, toPair(pair), hours)
 }
 
-function getMarketHistory ( pair=['BTC','USDT'], hours=24 ) {
+function getMarketHistory (pair=['BTC','USDT'], hours=24) {
   return get(URL.marketHistory, toPair(pair), hours)
 }
 
-function getMarketOrders ( pair=['BTC','USDT'], orderCount=100 ) {
-  if (orderCount > 1000) console.warn('Order count can\'t exceed 1000')
+function getMarketOrders (pair=['BTC','USDT'], orderCount=100) {
+  if (orderCount > 1000) console.warn("Order count can't exceed 1000")
   return get(URL.orders, toPair(pair), orderCount)
 }
 
-function getMarketOrderGroups ( pairs=[['BTC','USDT']], orderCount=100 ) {
-  if (orderCount > 1000) console.warn('Order count can\'t exceed 1000')
+function getMarketOrderGroups (pairs=[['BTC','USDT']], orderCount=100) {
+  if (orderCount > 1000) console.warn("Order count can't exceed 1000")
   return get(URL.orderGroups, pairs.map(p=>toPair(p)).join('-'), orderCount)
 }
 
